@@ -17,7 +17,7 @@ mongoose.connect('mongodb://localhost:27017/session_auth', {
   .catch(err => console.log(err));
 
 app.use(session({
-  secret: 'badsecret',
+  secret: process.env.SESSION_SECRET,
   resave: false,
   saveUninitialized: false,
   store: MongoStore.create({ mongoUrl: 'mongodb://localhost:27017/session_auth' }),
